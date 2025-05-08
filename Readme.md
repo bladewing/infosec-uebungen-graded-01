@@ -86,9 +86,10 @@ Bei fehlgeschlagenen Tests:
 
 ## Abgaberichtlinien
 
-- Reichen Sie Ihre Lösung als ZIP-Datei auf der OPAL-Kursplattform ein
+- Reichen Sie Ihre Lösung schrittweise über den Opal-Kurs ein
+- Es sind dabei jeweils nur die Funktionen einzureichen, die in der jeweligen Teilaufgabe mit einem Platzhalter versehen sind
+- Wenn Sie zusätzliche Funktionen implementiert haben, kopieren Sie diese vor die Platzhalter
 - Behalten Sie die ursprüngliche Projektstruktur bei
-- Sowohl C- als auch C++-Implementierungen werden akzeptiert
 - Stellen Sie sicher, dass Ihr Code in der Vagrant-Umgebung kompiliert und alle Tests besteht
 
 ## Zusätzliche Ressourcen
