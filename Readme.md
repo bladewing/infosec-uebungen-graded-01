@@ -41,7 +41,6 @@ $ cd infosec-uebungen-graded-01
 Die bereitgestellte Vagrant-Box verfügt bereits über alle notwendigen Abhängigkeiten.
 
 ```console
-$ cd task
 $ vagrant up
 $ vagrant ssh
 $ cd /vagrant/code
