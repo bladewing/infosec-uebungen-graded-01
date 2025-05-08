@@ -1,52 +1,112 @@
-# Bewertete Aufgabe AES
+# AES-Implementierungsprojekt (Bewertete Aufgabe)
 
-## Allgemeine Aufgabenstellung
+## Überblick
 
-* Implementieren Sie die AES-Verschlüsselung.
-* Ihre Implementierung sollte in der beigefügten Vagrant-Box lauffähig sein.
-* Testen Sie Ihre Implementierung mit den beigefügten Testfällen.
-* Geben Sie entweder ein Script zum kompilieren und ausführen Ihrer Implementierung oder ein entsprechendes CMake-File ab.
-* Im Folgenden werden die einzelnen Teilaufgaben ausführlicher beschrieben.
+In diesem Projekt sollen Sie den Advanced Encryption Standard (AES) implementieren, einen symmetrischen Blockchiffre, der von NIST standardisiert wurde. AES arbeitet mit 128-Bit-Blöcken und unterstützt Schlüssellängen von 128, 192 oder 256 Bits.
 
-## Aufgabenstellung
+## Anforderungen
 
-Checken Sie das Git-Repository aus:
+- Implementieren Sie den AES-Verschlüsselungs- und Entschlüsselungsalgorithmus
+- Stellen Sie sicher, dass Ihre Implementierung in der bereitgestellten Vagrant-Umgebung lauffähig ist
+- Bestehen Sie alle vorgegebenen Testfälle
+- Halten Sie sich an die Funktionsdeklarationen in der bereitgestellten Header-Datei
+
+## Erste Schritte
+
+### 1. Repository klonen
 
 ```console
 $ git clone https://github.com/bladewing/infosec-uebungen-graded-01.git
+$ cd infosec-uebungen-graded-01
 ```
 
-Die Datei ```aes.h``` enthält die Deklarationen der Funktionen, die Sie implementieren müssen. 
-Diese sind bereits als Dummy-Funktionen in ```aes.c``` implementiert, sodass die Tests bereits kompilieren und laufen sollten. 
-Zudem finden Sie in der Datei ```aes.c``` die **S-Box** und die **inverse S-Box**, die Sie für die Implementierung von AES benötigen.
+### 2. Projektstruktur
 
-Die Beschreibung der erwarteten Logik der geforderten Funktionen finden Sie in der ```aes.h```.
+- `/code/src/aes.h`: Enthält alle Funktionsdeklarationen, die Sie implementieren müssen
+- `/code/src/aes.c`: Enthält Dummy-Implementierungen und die S-Box-Tabellen
+- `/code/tests/`: Enthält Testdateien für jede AES-Funktion
 
-## Kompilieren
+### 3. Implementierungsdetails
 
-* Nutzen Sie die beigefügte Vagrant-Box, in dieser ist alles notwendige bereits installiert. Wenn Sie lokal auf Ihrem Rechner arbeiten, müssen Sie sicherstellen, dass Ihre Lösung in der Vagrant-Box kompilierbar ist.
-* Nutzen Sie das beigefügte CMake-File zum Kompilieren. Sie müssen sich dazu im Verzeichnis \texttt{code} befinden.
-  * Konfigurieren Sie die CMake-Datei mit dem Befehl 
-  ```console
-  $ cmake .
-  ```
-  * Kompilieren Sie das Projekt mit dem Befehl 
-  ```console
-  $ cmake --build .
-  ```
-  * Führen Sie Ihre Tests mit dem Befehl 
-  ```console
-  $ ctest --output-on-failure
-  ```
-  Dieser gibt Ihnen die Ausgabe der Tests aus, wenn diese fehlschlagen.
+- Die Datei `aes.h` enthält Funktionsdeklarationen mit Kommentaren, die das erwartete Verhalten beschreiben
+- Die Datei `aes.c` enthält:
+  - Leere Implementierungen aller erforderlichen Funktionen
+  - Die **S-Box** und **inverse S-Box** Tabellen, die Sie für Ihre Implementierung benötigen
+- Ihre Aufgabe besteht darin, jede Funktion gemäß der AES-Spezifikation zu implementieren
 
-## Abgabe
+## Kompilieren und Testen
 
-Laden Sie Ihre Lösung im OPAL-Kurs hoch. Es werden Abgaben in den Sprachen C und C++ akzeptiert.
+### Verwendung der Vagrant-Umgebung (Empfohlen)
 
-Laden Sie Ihre Lösung als ZIP-Datei hoch. Diese sollte die Struktur der Aufgabenstellung widerspiegeln. 
+Die bereitgestellte Vagrant-Box verfügt bereits über alle notwendigen Abhängigkeiten.
 
-## Hilfreiche Hinweise
+```console
+$ cd task
+$ vagrant up
+$ vagrant ssh
+$ cd /vagrant/code
+```
 
-* Im Kurs wurde ein Buch bereitgestellt, dass die Implementierung von AES beschreibt. Nutzen Sie dieses Buch als Referenz.
-* Unter https://www.cryptool.org/en/cto/aes-step-by-step finden Sie eine interaktive Implementierung von AES. Nutzen Sie diese, um Ihre Implementierung zu testen und Fehler zu verstehen.
+### Build-Anweisungen
+
+Navigieren Sie zum Verzeichnis `code` und führen Sie folgende Befehle aus:
+
+1. Konfigurieren Sie das CMake-Projekt:
+
+   ```console
+   $ cmake .
+   ```
+
+2. Kompilieren Sie das Projekt:
+
+   ```console
+   $ cmake --build .
+   ```
+
+3. Führen Sie die Tests aus:
+   ```console
+   $ ctest --output-on-failure
+   ```
+   Dieser Befehl zeigt detaillierte Ausgaben für fehlgeschlagene Tests an.
+
+### Fehlersuche bei Tests
+
+Bei fehlgeschlagenen Tests:
+
+1. Überprüfen Sie die spezifische Testausgabe, um Hinweise darauf zu erhalten, welcher Aspekt Ihrer Implementierung fehlerhaft ist
+2. Sehen Sie sich die Testdatei in `/code/tests/` an, um zu verstehen, was der Test überprüft
+3. Verwenden Sie bei Bedarf Debugging-Tools wie `gdb`
+
+## Implementierungstipps
+
+1. **Einfach beginnen**: Starten Sie mit grundlegenden Funktionen wie S-Box-Lookups und Key-Scheduling
+2. **Schrittweiser Ansatz**: Implementieren und testen Sie eine Funktion nach der anderen
+3. **Debugging**: Die Testdateien können Ihnen helfen, die erwarteten Eingabe-/Ausgabebeziehungen zu verstehen
+4. **Speicherverwaltung**: Achten Sie sorgfältig auf Array-Indizes und Puffergrößen
+5. **AES-Struktur**: Denken Sie an die Hauptoperationen: SubBytes, ShiftRows, MixColumns und AddRoundKey
+
+## Abgaberichtlinien
+
+- Reichen Sie Ihre Lösung als ZIP-Datei auf der OPAL-Kursplattform ein
+- Behalten Sie die ursprüngliche Projektstruktur bei
+- Sowohl C- als auch C++-Implementierungen werden akzeptiert
+- Stellen Sie sicher, dass Ihr Code in der Vagrant-Umgebung kompiliert und alle Tests besteht
+
+## Zusätzliche Ressourcen
+
+- **Kursbuch**: Verwenden Sie die Kapitel zur AES-Implementierung im bereitgestellten Kursbuch
+- **Interaktives Tutorial**: [CrypTool AES Step-by-Step](https://www.cryptool.org/de/cto/aes-step-by-step) - Visualisieren Sie den AES-Algorithmus und debuggen Sie Ihre Implementierung
+- **NIST-Standard**: [FIPS 197](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf) - Offizielle AES-Spezifikation
+- **Online-Referenzen**:
+  - [Rijndael Animation](https://formaestudio.com/rijndaelinspector/archivos/Rijndael_Animation_v4_eng.swf) - Visuelle Animation des AES-Prozesses
+  - [AES Wikipedia](https://de.wikipedia.org/wiki/Advanced_Encryption_Standard) - Überblick über den Algorithmus
+
+## Typische Fallstricke
+
+- Verwechslung der Zeilen- und Spaltenreihenfolge in der State-Matrix
+- Fehlerhafte Implementierung des MixColumns-Schritts
+- Fehler im Key-Expansion-Algorithmus
+- Off-by-one-Fehler bei der Rundenzählung
+- Probleme mit der Byte-Reihenfolge
+
+Viel Erfolg bei Ihrer Implementierung!
