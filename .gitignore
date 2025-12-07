@@ -1,0 +1,40 @@
+# CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+Testing/
+
+# Compiled outputs
+*.a
+*.o
+
+# Test executables (no extension)
+code/tests/addRoundKey
+code/tests/aes192
+code/tests/aes256
+code/tests/cbc_decrypt
+code/tests/cbc_encrypt
+code/tests/decrypt
+code/tests/ecb_decrypt
+code/tests/ecb_encrypt
+code/tests/encrypt
+code/tests/encrypt_decrypt
+code/tests/getRoundKey
+code/tests/invMixColumns
+code/tests/invShiftRows
+code/tests/invSubBytes
+code/tests/keyExpansion
+code/tests/mixColumns
+code/tests/mul2
+code/tests/mul3
+code/tests/numKeyWords
+code/tests/numRounds
+code/tests/rc
+code/tests/sboxes
+code/tests/shiftRows
+code/tests/subBytes
+
+# Vagrant
+.vagrant/
