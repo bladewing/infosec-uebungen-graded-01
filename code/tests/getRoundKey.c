@@ -70,7 +70,7 @@ int main()
         if (round_key[i] != round_keys[i+16])
         {
             printf("Error at index %d\n", i);
-            printf("Expected: %x\n", round_keys[i]);
+            printf("Expected: %x\n", round_keys[i+16]);
             printf("Got: %x\n", round_key[i]);
             return 1;
         }
@@ -82,7 +82,7 @@ int main()
         if (round_key[i] != round_keys[i+(16*8)])
         {
             printf("Error at index %d\n", i);
-            printf("Expected: %x\n", round_keys[i]);
+            printf("Expected: %x\n", round_keys[i+(16*8)]);
             printf("Got: %x\n", round_key[i]);
             return 1;
         }
